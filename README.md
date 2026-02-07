@@ -1,33 +1,51 @@
-# Predicting Heart Disease: EDA & Classification
+# 🩺 Predicting Heart Disease: Kaggle Classification Project
 
-An end-to-end data science project utilizing Kaggle's Heart Disease dataset to identify key biological indicators of cardiac issues and build a predictive model.
+[![Kaggle Score](https://img.shields.io/badge/Kaggle%20Score-87.97%25-gold?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![ML](https://img.shields.io/badge/Model-Random%20Forest-green?style=for-the-badge)](https://scikit-learn.org/)
+
+An end-to-end data science project utilizing the Kaggle Heart Disease dataset to identify key biological indicators of cardiac issues and build a high-precision predictive model.
 
 ## 📌 Project Overview
-This project explores the factors that contribute most to heart disease. By analyzing patient data (age, cholesterol, heart rate, etc.), the goal is to develop a machine learning model capable of predicting the presence of heart disease with high precision.
+This project focuses on predicting the presence of heart disease based on clinical parameters. By transitioning from deep Exploratory Data Analysis (EDA) to an optimized Random Forest model, I achieved a competition score of **87.97%**.
 
-## 📊 Exploratory Data Analysis (EDA) Findings
-I have completed the initial EDA phase. Key insights include:
+## 📊 Key EDA Insights
+The initial analysis revealed critical patterns in patient data:
+* **Demographic Risks:** Risk factors increase significantly in patients aged **50–65**.
+* **Primary Indicators:** Lower **Max Heart Rate** (below 150 BPM) and higher **ST Depression** (above 1.0) are the strongest individual predictors of disease.
+* **Feature Distribution:** Identified right-skewness in `Cholesterol` and `ST Depression`, addressed via standard scaling.
+* **Low Impact Factors:** Fasting Blood Sugar (FBS) and Cholesterol showed surprisingly low direct correlation with the target in this specific cohort.
 
-* **Class Imbalance:** The target variable shows more "Absent" cases than "Present," indicating a need for data balancing techniques (e.g., SMOTE) before modeling.
-* **Demographics:** Patients are primarily aged between 50 and 65.
-* **Feature Distribution:** * **Cholesterol, Max HR, and ST Depression** are all skewed to the right.
-    * Age is relatively evenly distributed.
-* **Key Risk Correlations:**
-    * Disease is more prevalent in patients **over age 50**.
-    * Heart Rate **below 150 BPM** and ST Depression **above 1** are strong indicators of disease presence.
-    * Interestingly, Cholesterol and BP showed minimal direct impact on the target variable in this specific dataset.
 
-## 🛠️ Tech Stack
-* **Language:** Python
-* **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
-* **Environment:** Jupyter Notebook / Kaggle Kernels
 
-## 🚀 Future Roadmap
-- [ ] Implement data balancing (Oversampling/Undersampling).
-- [ ] Apply feature scaling to address right-skewed data.
-- [ ] Train and compare classification models (Random Forest, Logistic Regression, XGBoost).
-- [ ] Hyperparameter tuning for the best-performing model.
+## 🛠️ The Machine Learning Pipeline
+
+### 1. Data Preprocessing
+* **Cleaning:** Removed `id` column to prevent noise.
+* **Encoding:** Transformed target variable (`Presence`/`Absence`) into binary format ($1$/$0$).
+* **Scaling:** Implemented `StandardScaler` on numerical features to ensure unit variance for the classifier.
+
+### 2. Modeling & Performance
+I chose the **Random Forest Classifier** for its robustness against skewed data and ability to capture non-linear relationships.
+
+* **Final Score:** 87.97% Accuracy
+* **Validation Strategy:** Train/Test Split with stratified sampling.
+
+### 3. Feature Importance
+Analysis of the model's internal logic confirmed that clinical test results outweigh basic demographics:
+
+
+
+## 🚀 Future Enhancements
+- [ ] **Hyperparameter Tuning:** Implement `GridSearchCV` to optimize `n_estimators` and `max_depth`.
+- [ ] **Advanced Ensembles:** Test XGBoost and LightGBM to improve the score beyond 88%.
+- [ ] **Deployment:** Create a simple Streamlit web app for real-time risk assessment.
+
+## 🧰 Tech Stack
+* **Analysis:** `Pandas`, `NumPy`
+* **Visualization:** `Seaborn`, `Matplotlib`
+* **Machine Learning:** `Scikit-Learn`
 
 ---
-## 🧬 Dataset
-The data used in this project is sourced from the [Kaggle Heart Disease Dataset](https://www.kaggle.com/).
+## 🧬 Dataset Credits
+The data is sourced from the [Kaggle Heart Disease Dataset](https://www.kaggle.com/).
